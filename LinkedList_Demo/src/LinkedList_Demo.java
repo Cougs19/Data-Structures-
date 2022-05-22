@@ -1,6 +1,5 @@
 import java.util.*;
 
-
 class Node{
 	int data;
 	Node next;
@@ -12,12 +11,11 @@ class Node{
 	}
 }
 
-
 public class LinkedList_Demo {
 	
 	Node head;
 	
-	//insert method 
+	//insert in the front of the LinkedList with two parameters
 	Node insertBegin(int key, Node head) {
 		// temp to store the value
 		Node temp = new Node(key);
@@ -31,6 +29,18 @@ public class LinkedList_Demo {
 		}
 			
 		return head;
+	}
+	
+	//insert push 
+	public void push(int data) {
+		Node temp = new Node(data);
+		if(head == null) {
+			head = temp;
+		}
+		else {
+			temp.next = head;
+			head = temp;
+		}
 	}
 	
 	//side method to get the size of the LinkedList
@@ -51,15 +61,14 @@ public class LinkedList_Demo {
 		return counter;
 	}
 	
-	void display(Node head) {
+	void printList(Node head) {
 		Node temp = head; // temp node is set to the head 
 		while(temp != null){
 			System.out.print(temp.data + " ");
 			temp = temp.next;
 		}
 	}
-	
-	
+		
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -74,12 +83,12 @@ public class LinkedList_Demo {
 		for(int i = 0; i < 5; i++) {
 			System.out.println("Enter value: ");
 			l.head = l.insertBegin(in.nextInt(), l.head);
+			l.push(in.nextInt());
 		}
-		
-		
-		l.display(l.head); //display the linkedlist 
-		System.out.println("\n" + l.size(l.head)); // the size the linkedlist
-
+				
+		l.printList(l.head); //display the linked list 
+		System.out.println("\n" + l.size(l.head)); // the size the linked list
+		in.close();
 	}
 
 }
